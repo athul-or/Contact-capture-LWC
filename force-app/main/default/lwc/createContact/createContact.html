@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-p-around_medium">
+        <h1>Create a New Contact</h1>
+        <lightning-input type="text" name="FirstName" label="First Name" onchange={handleInputChange}></lightning-input>
+        <lightning-input type="text" name="LastName" label="Last Name" onchange={handleInputChange}></lightning-input>
+        <lightning-input type="email" name="Email" label="Email" onchange={handleInputChange}></lightning-input>
+        <lightning-input type="tel" name="Phone" label="Phone" onchange={handleInputChange}></lightning-input>
+        <lightning-input type="text" name="MailingStreet" label="Address" onchange={handleInputChange}></lightning-input>
+        <lightning-button label="Save Contact" onclick={saveContact} class="slds-m-top_medium"></lightning-button>
+        <template if:true={hasMessage}>
+            <div if:true={error} style='color: red;'>
+                {message}
+            </div>
+            <div if:false={error} style='color: green;'>
+                {message}
+            </div>
+        </template>
+    </div>
+</template>
