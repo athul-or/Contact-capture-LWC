@@ -1,0 +1,45 @@
+<template>
+    <lightning-card title="Accounts and Contacts">
+        
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+            <thead>
+                <tr>
+                    <th>Account Name</th>
+                    <th>Contact Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={accounts} for:item="account">
+
+                    <tr key={account.account.Id} class="slds-text-title_bold">
+                        <td colspan="5">
+                            <lightning-button-icon
+                                icon-name={account.iconName}
+                                alternative-text="Toggle"
+                                onclick={toggleSection}
+                                data-id={account.account.Id}
+                                class="slds-m-right_small"
+                            ></lightning-button-icon>
+                            {account.account.Name}
+                        </td>
+                    </tr>
+
+                    <template if:true={account.isExpanded}>
+                        <template for:each={account.contacts} for:item="contact">
+                            <tr key={contact.Id}>
+                                <td></td>
+                                <td>{contact.Name}</td>
+                                <td>{contact.Phone}</td>
+                                <td>{contact.Email}</td>
+                                <td>{contact.MailingCity},{contact.MailingStreet}</td>
+                            </tr>
+                        </template>
+                    </template>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

@@ -21,7 +21,7 @@ export default class CreateContact extends LightningElement {
   }
 
   saveContact() {
-    // Prepare the Contact record
+  
     const fields = {
       FirstName: this.contact.FirstName,
       LastName: this.contact.LastName,
@@ -36,7 +36,7 @@ export default class CreateContact extends LightningElement {
 
     const recordInput = { apiName: "Contact", fields };
 
-    // Use createRecord to save the Contact
+
     createRecord(recordInput)
       .then((result) => {
         this.showToast("Success", "Contact created successfully!", "success");
